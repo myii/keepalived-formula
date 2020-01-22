@@ -6,6 +6,7 @@
 {%- set carryovers = ['real_server', 'virtual_server', 'virtual_server_group', 'vrrp_instance', 'vrrp_script', 'vrrp_sync_group'] -%}
 
 {%- macro print_config(data, carryover='', recurse=-1, indent=0) -%}
+  {%- do salt.log.error('CHECK_VALUE_OF_data\n' ~ data|yaml(False)) %}
   {%- set recurse = recurse + 1 -%}
   {%- if data is none -%}
     {{- '\n' -}}
